@@ -14,12 +14,15 @@ public class MainActivity extends Activity {
 
     private ImageView batteryImageView;
     private TextView batteryPercentageView;
+    private TextView batteryTechnologyView;
+    private TextView batteryStatusView;
 
     private BroadcastReceiver batteryReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             int capacity = intent.getIntExtra(BatteryManager.EXTRA_SCALE, 0);
             int level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, 0);
+            String tech = intent.getStringExtra(BatteryManager.EXTRA_TECHNOLOGY);
 
             float fPercent = ((float) level / (float) capacity) * 100f;
             int percent = Math.round(fPercent);
@@ -30,6 +33,10 @@ public class MainActivity extends Activity {
             batteryPercentageView.setText(
                     getString(R.string.battery_percent_format,
                             percent));
+            batteryTechnologyView.setText(tech);
+
+            int state = getBatteryState(intent);
+            batteryStatusView.setText(getResources().getStringArray(R.array.battery_states)[state]);
         }
     };
 
@@ -40,6 +47,8 @@ public class MainActivity extends Activity {
 
         batteryImageView = (ImageView) findViewById(R.id.battery_image);
         batteryPercentageView = (TextView) findViewById(R.id.battery_percentage);
+        batteryTechnologyView = (TextView) findViewById(R.id.battery_technology);
+        batteryStatusView = (TextView) findViewById(R.id.battery_status);
     }
 
     @Override
@@ -55,5 +64,22 @@ public class MainActivity extends Activity {
     protected void onStop() {
         super.onStop();
         unregisterReceiver(batteryReceiver);
+    }
+
+    private boolean isBatteryPresent(Intent intent) {
+        return intent.getBooleanExtra(BatteryManager.EXTRA_PRESENT, true);
+    }
+
+    ;
+
+    private int getBatteryState(Intent intent) {
+        int state = 0;
+
+        if (isBatteryPresent(intent)) {
+            state = intent.getIntExtra(BatteryManager.EXTRA_STATUS,
+                    BatteryManager.BATTERY_STATUS_UNKNOWN);
+        }
+
+        return state;
     }
 }

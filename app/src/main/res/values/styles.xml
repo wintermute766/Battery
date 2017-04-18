@@ -5,4 +5,9 @@
         <!-- Customize your theme here. -->
     </style>
 
+
+    <style name="PercentAppearance"
+        parent="android:TextAppearance.Holo.Large">
+    </style>
+
 </resources>

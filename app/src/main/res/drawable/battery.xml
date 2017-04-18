@@ -7,16 +7,29 @@
             android:gravity="bottom">
             <shape android:shape="rectangle">
                 <stroke
-                    android:color="@color/battery_stroke"
-                    android:width="@dimen/battery_corners"/>
+                    android:width="@dimen/battery_corners"
+                    android:color="@color/battery_stroke" />
                 <corners
                     android:bottomLeftRadius="@dimen/battery_corners"
                     android:bottomRightRadius="@dimen/battery_corners"
                     android:topLeftRadius="@dimen/battery_corners"
-                    android:topRightRadius="@dimen/battery_corners"/>
+                    android:topRightRadius="@dimen/battery_corners" />
                 <solid android:color="@color/battery_fill" />
             </shape>
         </clip>
+    </item>
+
+    <item>
+        <shape android:shape="rectangle">
+            <stroke
+                android:width="@dimen/battery_corners"
+                android:color="@color/battery_stroke" />
+            <corners
+                android:bottomLeftRadius="@dimen/battery_corners"
+                android:bottomRightRadius="@dimen/battery_corners"
+                android:topLeftRadius="@dimen/battery_corners"
+                android:topRightRadius="@dimen/battery_corners" />
+        </shape>
     </item>
 
 </layer-list>
