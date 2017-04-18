@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.BatteryManager;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,7 +18,18 @@ public class MainActivity extends Activity {
     private BroadcastReceiver batteryReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
+            int capacity = intent.getIntExtra(BatteryManager.EXTRA_SCALE, 0);
+            int level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, 0);
 
+            float fPercent = ((float) level / (float) capacity) * 100f;
+            int percent = Math.round(fPercent);
+
+            int drawableLevel = percent * 100;
+            batteryImageView.getDrawable().setLevel(drawableLevel);
+
+            batteryPercentageView.setText(
+                    getString(R.string.battery_percent_format,
+                            percent));
         }
     };
 
