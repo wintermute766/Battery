@@ -70,8 +70,6 @@ public class MainActivity extends Activity {
         return intent.getBooleanExtra(BatteryManager.EXTRA_PRESENT, true);
     }
 
-    ;
-
     private int getBatteryState(Intent intent) {
         int state = 0;
 

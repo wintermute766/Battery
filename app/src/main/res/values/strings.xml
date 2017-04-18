@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Battery</string>
+
     <string name="battery_percent_format">%1$d%%</string>
+
     <string-array name="battery_states">
         <item>No battery</item>
         <item>Unknown</item>

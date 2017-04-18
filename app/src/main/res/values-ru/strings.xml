@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Батарея</string>
+
+    <string name="battery_percent_format">%1$d%%</string>
+
+    <string-array name="battery_states">
+        <item>Нет батареи</item>
+        <item>Состояние неизвестно</item>
+        <item>Заряжается</item>
+        <item>Разряжается</item>
+        <item>Не заряжается</item>
+        <item>Полный заряд</item>
+    </string-array>
+</resources>

@@ -9,6 +9,6 @@
     </style>
 
     <style name="PercentAppearance"
-        parent="android:TextAppearance.Holo.Large"/>
+        parent="android:TextAppearance.Material.Large"/>
 
 </resources>
